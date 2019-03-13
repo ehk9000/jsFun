@@ -12,24 +12,32 @@ const scope = {
 
       function beautifyPerson() {
         // Log A: personB
-        
+        console.log("log A ", personB); // Ben
         if (personB.includes('B')) {
           personB = person;
           personC = personB;
           // Log B: personC
+          console.log("Log B ", personC); // CardiB
         }
       }
 
       personC = personA;
 
       // Log C: personB
+      console.log("Log C: ", personB); // CardiB
     }
 
     changePerson();
 
     // Log D: personC
+    console.log("Log D: ", personC); // Paul
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {A:'Ben'},
+      {B: 'CardiB'},
+      {C: 'CardiB'},
+      {D: 'Paul'}
+    ];
     return result;
 
     // Annotation:
@@ -47,23 +55,32 @@ const scope = {
       }
 
       // Log A: number
+      console.log("Log A Answer: ", number, "Log A Guess 75"); // 75
 
       function newNumber() {
         number = 64;
 
         // Log B: number
+        console.log("Log B answer: ", number, "Log B guess 64"); // 64
       }
 
       newNumber();
 
       // Log C: number
+      console.log("Log C answer: ",number, "log c guess 64"); // 64
     }
 
     numberFunction();
 
     // Log D: number
+    console.log("Log D answer: ", number, "log D guess 30"); // 30
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {A: 75 },
+      {B: 64},
+      {C: 64},
+      {D: 30}
+    ];
     return result;
 
     // Annotation:
@@ -81,23 +98,31 @@ const scope = {
       }
 
       // Log A: greeting
-
+      console.log(greeting); // YO
       function newPhrase() {
         greeting = 'Hey';
 
         // Log B: greeting
+        console.log(greeting); //Hey
       }
 
       newPhrase();
 
       // Log C: greeting
+      console.log(greeting); // Hey
     }
 
     greetingFunction();
 
     // Log D: greeting
+    console.log(greeting); // Hello
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {A: 'Yo'},
+      {B: 'Hey'},
+      {C: 'Hey'},
+      {D: 'Hello'}
+    ];
     return result;
 
     // Annotation:
@@ -115,23 +140,32 @@ const scope = {
       }
 
       // Log A: greeting
+      console.log(greeting); // hi
 
       const newGreeting = ()  => {
         greeting = 'welcome';
 
         // Log B: greeting
+        console.log(greeting); //welcome
       };
 
       newGreeting();
 
       // Log C: greeting
+      console.log(greeting); // welcome
     };
 
     greetingGenerator();
 
     // Log D: greeting
+    console.log(greeting);//howdy
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {A: 'hi'},
+      {B: 'welcome'},
+      {C: 'welcome'},
+      {D: 'howdy'}
+    ];
     return result;
 
     // Annotation:
@@ -152,18 +186,26 @@ const scope = {
         }
 
         // Log A: name
+        console.log('Log A: ', name); // Nathaniel
       }
 
       // Log B: name
+      console.log('Log B: ', name);// Nathaniel
     }
 
     // Log C: name
-
+    console.log('Log C: ', name);// Brittany
     sayName();
 
     // Log D: name
+    console.log('Log D: ', name);// Brittany
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {C: 'Brittany'},
+      {A: 'Nathaniel'},
+      {B: 'Nathaniel'},
+      {D: 'Brittany'}
+    ];
     return result;
 
     // Annotation:
@@ -175,6 +217,7 @@ const scope = {
 
     function petDog() {
       // Log A: dog
+      console.log("Log A: ", dog); // Spot
 
       if (dog === 'Spot') {
         let dog = 'Fluffy';
@@ -182,23 +225,31 @@ const scope = {
 
       function rollOver() {
         // Log B: dog
-
+        console.log("Log B: ", dog);// Spot
         dog = 'Biscuit';
 
         // Log C: dog
-
+        console.log("Log C: ", dog);// Biscuit
       }
 
       rollOver();
 
       // Log D: dog
+      console.log("Log D: ", dog);// Biscuit
+
     }
 
     petDog();
 
     // Log E: dog
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    console.log("Log E: ", dog);//Biscuit
+    const result = [
+      {A: 'Spot'},
+      {B: 'Spot'},
+      {C: 'Biscuit'},
+      {D: 'Biscuit'},
+      {E: 'Biscuit'}
+    ];
     return result;
 
     // Annotation:
@@ -215,20 +266,34 @@ const scope = {
 
         if (fruit) {
           // Log A: fruit
+
           const fruit = 'strawberry';
+          console.log('Log  A: ', fruit);// strawberry
+
+
         }
 
         // Log B: fruit
+        console.log('Log  B: ', fruit);// mango
+
       }
 
       // Log C: fruit
+      console.log('Log C: ', fruit); // mango
+
     }
 
     eatFruit();
 
     // Log D: fruit
+    console.log('Log D: ', fruit); // apple
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {A: 'reference error'},
+      {B: 'mango'},
+      {C: 'mango'},
+      {D: 'apple'}
+    ];
     return result;
 
     // Annotation:
@@ -242,6 +307,7 @@ const scope = {
       let num = 4;
 
       // Log A: num
+      console.log('Log A: ', num, 4);// 4
 
       if (num < 5) {
         const num = 9;
@@ -251,24 +317,38 @@ const scope = {
         const newNum = num;
 
         // Log B: newNum
+        console.log('Log B: ', num, 9); //
+
       }
 
       newNum = num;
 
       // Log C: newNum
+      console.log('Log C: ', num, 4);//
+
     };
 
     const fn2 = function(num){
       // Log D: num
+      console.log('Log D: ', num, 9);//
+
 
       num = num + 1;
 
       // Log E: num
+      console.log('Log E: ', num, 10);//
+
     };
 
     fn1();
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {A: 4},
+      {D: 9},
+      {E: 10},
+      {B: 9},
+      {C: 4}
+    ];
     return result;
 
     // Annotation:
@@ -281,25 +361,41 @@ const scope = {
     function eatSnack() {
       hunger -= 25;
       // Log A: hunger
+      console.log("Log A: ", hunger);// 75, 55 second time
       gorgeYourself();
 
       function gorgeYourself() {
         const hunger = 0;
         // Log B: hunger
+        console.log("Log B: ", hunger); // 0
+
       }
 
       // Log C: hunger
+      console.log("Log C: ", hunger); //  75 , 55 second time
+
     }
 
     eatSnack();
 
     hunger += 5;
     // Log D: hunger
+    console.log("Log D: ", hunger); // 80
 
     eatSnack();
     // Log E: hunger
+    console.log("Log E: ", hunger);// 55
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {A: 75},
+      {B: 0},
+      {C: 75},
+      {D: 80},
+      {A: 55},
+      {B: 0},
+      {C: 55},
+      {E: 55}
+    ];
     return result;
 
     // Annotation:
@@ -310,21 +406,29 @@ const scope = {
     let sandwich = 'ketchup sandwich';
 
     // Log A: sandwich
+    console.log('Log A:', sandwich, '');
 
     const addChipotle = () => {
       // Log B: toppings
+      console.log('Log B:', toppings, '');
+
+
       var toppings = 'chipotle sauce';
 
-      if (toppings === 'chipotle sauce') { 
+      if (toppings === 'chipotle sauce') {
         sandwich = 'not a mediocre sandwich';
       }
 
       // Log C: sandwich
+      console.log('Log C:', sandwich, '');
+
     };
 
     const addCheese = () => {
       let cheeseTopping = 'gouda';
       // Log D: cheeseTopping
+      console.log('Log D:', cheeseTopping, '');
+
 
       const shesTheManReference = () => {
         amandaBynes = 'National Treasure';
@@ -338,7 +442,11 @@ const scope = {
 
     addChipotle();
     // Log E: sandwich
+    console.log('Log E:', sandwich, '');
+
     // Log F: amandaBynes
+    console.log('Log F:', amandaBynes, '');
+
 
     const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
@@ -518,7 +626,7 @@ const scope = {
       // Log A: kid
       wildKids.push(kid);
       // Log B: wildKids
-  
+
       let drawOnTheWall = () => {
         let myKid = 'Mandy';
         // Log C: myKid
@@ -556,7 +664,7 @@ const scope = {
       // Log B: myName
 
       let innerFunc = () => {
-        let myName = 'Tesla'; 
+        let myName = 'Tesla';
         // Log C: myName
       };
 
