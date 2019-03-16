@@ -406,11 +406,11 @@ const scope = {
     let sandwich = 'ketchup sandwich';
 
     // Log A: sandwich
-    console.log('Log A:', sandwich, '');
+    console.log('Log A:', sandwich, 'ketchup sandwich');
 
     const addChipotle = () => {
       // Log B: toppings
-      console.log('Log B:', toppings, '');
+      console.log('Log B:', toppings, 'unfefined');
 
 
       var toppings = 'chipotle sauce';
@@ -420,14 +420,14 @@ const scope = {
       }
 
       // Log C: sandwich
-      console.log('Log C:', sandwich, '');
+      console.log('Log C:', sandwich, 'not a mediocre sandwich');
 
     };
 
     const addCheese = () => {
       let cheeseTopping = 'gouda';
       // Log D: cheeseTopping
-      console.log('Log D:', cheeseTopping, '');
+      console.log('Log D:', cheeseTopping, 'gouda');
 
 
       const shesTheManReference = () => {
@@ -442,13 +442,20 @@ const scope = {
 
     addChipotle();
     // Log E: sandwich
-    console.log('Log E:', sandwich, '');
+    console.log('Log E:', sandwich, 'not a mediocre sandwich');
 
     // Log F: amandaBynes
-    console.log('Log F:', amandaBynes, '');
+    console.log('Log F:', amandaBynes, 'National Treasure');
 
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {A: 'ketchup sandwich'},
+      {D: 'gouda'},
+      {B: undefined},
+      {C: 'not a mediocre sandwich'},
+      {E: 'not a mediocre sandwich'},
+      {F: 'National Treasure'}
+    ];
     return result;
 
     // Annotation:
@@ -463,13 +470,18 @@ const scope = {
         num = 7;
       }
       // Log A: num
+      console.log("Log A: ", num, 7);
     }
 
     foo();
 
     // Log B: num
+    console.log("Log B: ", num, 7);
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {A: 7},
+      {B: 7}
+    ];
     return result;
 
     // Annotation:
