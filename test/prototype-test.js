@@ -502,6 +502,7 @@ describe("PROTOTYPES", () => {
         name: 'Justin Duncan',
         nationality: 'Alien',
         imdbStarMeterRating: 0
+      }, {
       }, 
       {
         name: 'Karin Ohman',
