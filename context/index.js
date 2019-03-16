@@ -61,17 +61,29 @@ const context = {
     const dog = {
       breed: 'Chihuahua',
       getBreed: function(){
+
         const innerFunction = function() {
           console.log(this.breed);
         };
+<<<<<<< HEAD
 
         return innerFunction();
+=======
+    
+        return innerFunction;
+>>>>>>> 22550954a9c25878c446b18b9fcfa184f998359f
       }
     };
 
+    var breed = dog.getBreed();
 
+<<<<<<< HEAD
     // What is the value of `this` when we call dog.getBreed()?
     const result = 'global window object';
+=======
+    // What is the value of `this` when we call breed()?
+    const result = 'REPLACE WITH YOUR RESULT HERE';
+>>>>>>> 22550954a9c25878c446b18b9fcfa184f998359f
     return result;
 
     // Annotation:
