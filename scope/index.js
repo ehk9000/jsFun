@@ -266,27 +266,25 @@ const scope = {
 
         if (fruit) {
           // Log A: fruit
-
           const fruit = 'strawberry';
-          console.log('Log  A: ', fruit);// strawberry
 
 
         }
 
         // Log B: fruit
-        console.log('Log  B: ', fruit);// mango
+        console.log('Log  B: ', fruit, 'mango');//
 
       }
 
       // Log C: fruit
-      console.log('Log C: ', fruit); // mango
+      console.log('Log C: ', fruit, 'mago'); //
 
     }
 
     eatFruit();
 
     // Log D: fruit
-    console.log('Log D: ', fruit); // apple
+    console.log('Log D: ', fruit, 'apple'); //
 
     const result = [
       {A: 'reference error'},
@@ -502,18 +500,26 @@ const scope = {
         }
 
         // Log A: grade
+        console.log('Log A', grade, 95);// 95
       }
 
       addPoints();
 
       // Log B: grade
+      console.log('Log B', grade, 90);//90
     }
 
     losePoints();
 
     // Log C: grade
+    console.log('Log C', grade, 90);
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {A: 95},
+      {B: 90},
+      {C:90}
+    ];
+
     return result;
 
     // Annotation:
@@ -525,12 +531,16 @@ const scope = {
 
     function first() {
       // Log A: num
+      console.log('Log A: ', num, 5);
       num = 6;
       // Log B: num
+      console.log('Log B: ', num, 6);
     }
 
     function second() {
       // Log C: num
+
+      console.log('Log C: ',  'reference error');
       let num = 7;
     }
 
@@ -538,8 +548,14 @@ const scope = {
     second();
 
     // Log D: num
+    console.log('Log D: ', num, 6);
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {A: 5},
+      {B: 6},
+      {C: "reference error"},
+      {D: 6}
+    ];
     return result;
 
     // Annotation:
@@ -552,6 +568,7 @@ const scope = {
     function changeInstructor() {
 
       // Log A: instructor
+      console.log('Log A: ', instructor, 'Pam');
 
       if (instructor === 'Brittany') {
         const instructor = 'Nathaniel';
@@ -560,25 +577,37 @@ const scope = {
       }
 
       // Log B: instructor
+      console.log('Log B: ', instructor, 'Pam');
 
       function rename() {
         instructor = 'Louisa';
         // Log C: instructor
+        console.log('Log C: ', instructor, 'Louisa');
       }
 
       rename();
 
       // Log D: instructor
+      console.log('Log D: ', instructor, 'Louisa');
 
     }
 
     // Log E: instructor
+    console.log('Log E: ', instructor, 'Pam');
 
     changeInstructor();
 
     // Log F: instructor
+    console.log('Log F: ', instructor, 'Louisa');
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = [
+      {E: 'Pam'},
+      {A: 'Pam'},
+      {B: 'Pam'},
+      {C: 'Louisa'},
+      {D: 'Louisa'},
+      {F: 'Louisa'}
+    ];
     return result;
 
     // Annotation:
@@ -590,14 +619,23 @@ const scope = {
 
     function putOnShoe() {
       // Log A: shoe
+      console.log('Log A: ', shoe, 'flipflop');
       var shoe = 'boot';
     }
 
     // Log B: shoe
+    console.log('Log B: ', shoe, 'flipflop');
+
     putOnShoe();
     // Log C: shoe
+    console.log('Log C: ', shoe, 'flipflop');
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+
+    const result = [
+      {B: 'flipflop'},
+      {A: 'undefined'},
+      {C: 'flipflop'}
+    ];
     return result;
 
     // Annotation:
@@ -609,6 +647,7 @@ const scope = {
     function orderLunch() {
       if (lunch) {
         // Log A: lunch
+        console.log('Log A: ', lunch, 'undefined');
         let lunch = 'sandwich';
       }
 
@@ -617,13 +656,20 @@ const scope = {
       }
 
       // Log B: lunch
+      console.log('Log B: ', lunch, 'soup');
+
     }
 
     orderLunch();
 
     // Log C: lunch
+    console.log('Log C: ', lunch, 'soup');
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+
+    const result = [
+      {B: 'soup'},
+      {C: 'soup'}
+    ];
     return result;
 
     // Annotation:
@@ -636,12 +682,17 @@ const scope = {
 
     let myCrazyKidAntics = kid => {
       // Log A: kid
+      console.log('Log A: ', kid, );
       wildKids.push(kid);
       // Log B: wildKids
+      console.log('Log B: ', wildKids, );
+
 
       let drawOnTheWall = () => {
         let myKid = 'Mandy';
         // Log C: myKid
+        console.log('Log C: ', myKid, );
+
         return `That wild kid ${myKid}, drew on the wall!`;
       };
 
@@ -650,11 +701,15 @@ const scope = {
       let myAmazingKid = () => {
         let myKid = wildKids.shift();
         // Log D: myKid
+        console.log('Log D: ', myKid, );
+
         return `That kid ${myKid}, is AMAZING!`;
       };
 
       myAmazingKid();
       // Log E: myKid;
+      console.log('Log E: ', myKid, );
+
       return `All these kids are wild, especially, ${myKid}!`;
     };
 

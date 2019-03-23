@@ -104,7 +104,19 @@ const clubPrompts = {
     //   ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const memberList = clubs.reduce((acc, currentClub) => {
+      currentClub.members.forEach(member => {
+        if (!acc[member]) {
+          acc[member] = [];
+        }
+          acc[member] = [currentClub.club];
+
+      });
+
+      return acc;
+    }, {}); //initial value of accumulator)
+
+    const result = memberList;
     return result;
 
     // Annotation:
@@ -265,6 +277,8 @@ const cakePrompts = {
     });
 
 
+    const flatToppings = toppings.flat([1]);
+
     const toppingsList = [].concat.apply([], toppings);
 
     const uniqueList = toppingsList.filter((item, pos) => {
@@ -289,7 +303,28 @@ const cakePrompts = {
     //    ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const toppingNum = cakes.map((currentTopping) => {
+      return currentTopping.toppings;
+    });
+
+    const toppingFlat = toppingNum.reduce((total, currentTop) => {
+      return total.concat(currentTop);
+    }, []);
+
+
+
+    const toppingsList = toppingFlat.reduce((total, currentTopping) => {
+      if (currentTopping in total) {
+        total[currentTopping]++;
+      } else {
+        total[currentTopping] = 1;
+      }
+       return total;
+    }, {});
+
+
+
+    const result = toppingsList;
     return result;
 
     // Annotation:
@@ -324,7 +359,13 @@ const classPrompts = {
     //   { roomLetter: 'G', program: 'FE', capacity: 29 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const frontEnd = classrooms.filter((currentClass) => {
+      if (currentClass.program === 'FE') {
+        return currentClass;
+      }
+    });
+
+    const result = frontEnd;
     return result;
 
     // Annotation:
@@ -339,7 +380,17 @@ const classPrompts = {
     //   beCapacity: 96
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const classCapacity = classrooms.reduce((total, currentClass) => {
+      if (currentClass.program === 'FE') {
+        total.feCapacity += currentClass.capacity;
+      } else {
+        total.beCapacity += currentClass.capacity;
+      }
+      return total;
+
+    }, {feCapacity: 0, beCapacity: 0});
+
+    const result = classCapacity;
     return result;
 
     // Annotation:
@@ -349,7 +400,11 @@ const classPrompts = {
   sortByCapacity() {
     // Return the array of classrooms sorted by their capacity (least capacity to greatest)
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const decendingCapacity = classrooms.sort((a, b) => {
+      return a.capacity - b.capacity;
+    });
+
+    const result = decendingCapacity;
     return result;
 
     // Annotation:
@@ -378,8 +433,15 @@ const breweryPrompts = {
   getBeerCount() {
     // Return the total beer count of all beers for every brewery e.g.
     // 40
+    const beerList = breweries.map((currentBeer) => {
+      return currentBeer.beers.length;
+    });
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const beersTotal = beerList.reduce((total, currentBeer) => {
+      return total + currentBeer;
+    });
+
+    const result = beersTotal;
     return result;
 
     // Annotation:
@@ -395,7 +457,14 @@ const breweryPrompts = {
     // ...etc.
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const brewCount = breweries.map((currentBeer) => {
+      let brewMap = {};
+      brewMap.name = currentBeer.name;
+      brewMap.beerCount = currentBeer.beers.length;
+      return brewMap;
+    });
+
+    const result = brewCount;
     return result;
 
     // Annotation:
@@ -406,7 +475,35 @@ const breweryPrompts = {
     // Return the beer which has the highest ABV of all beers
     // e.g.
     // { name: 'Barrel Aged Nature\'s Sweater', type: 'Barley Wine', abv: 10.9, ibu: 40 }
+    const reducedBeer = breweries.reduce()
+    const sortBeers = breweries.sort((a, b) => {
+      return b.beers.nameabv - a.beers.abv;
 
+    });
+    const mapBeer = breweries.map((currentBeer) => {
+      return currentBeer.beers;
+    });
+    console.log(mapBeer);
+
+    const sortBeer = mapBeer.sort((a, b) => {
+      return b.abv - a.abv
+    });
+    console.log(sortBeer);
+
+    // const highestAbv = mapBeer.reduce((total, currentBeer) => {
+    //   let name = currentBeer.name;
+    //   let type = currentBeer.type;
+    //   let abv = currentBeer.abv;
+    //   let ibu = currentBeer.ibu;
+    //
+    //   if (total['abv'] > currentBeer['abv']) {
+    //     return total;
+    //   }
+    //   // return total;
+    // }, {});
+    // console.log(highestAbv);
+
+    const highAbv = breweries.find((high))
     const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
@@ -754,7 +851,7 @@ const dinosaurPrompts = {
         name: 'Justin Duncan',
         nationality: 'Alien',
         imdbStarMeterRating: 0
-      }, 
+      },
       {
         name: 'Karin Ohman',
         nationality: 'Chinese',

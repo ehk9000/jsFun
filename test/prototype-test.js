@@ -158,7 +158,7 @@ describe("PROTOTYPES", () => {
     }), it("allToppings", () => {
       const e = cakePrompts.allToppings();
       expect(e).to.deep.equal(["dutch process cocoa", "toasted sugar", "smoked sea salt", "berries", "edible flowers", "mint", "cranberry", "crystallized ginger"])
-    }), it.skip("groceryList", () => {
+    }), it("groceryList", () => {
       const e = cakePrompts.groceryList();
       expect(e).to.deep.equal({
         "dutch process cocoa": 1,
@@ -172,7 +172,7 @@ describe("PROTOTYPES", () => {
       })
     })
   }), describe("Class Prompts", () => {
-    it.skip("feClassrooms", () => {
+    it("feClassrooms", () => {
       const e = classPrompts.feClassrooms();
       expect(e).to.deep.equal([{
         roomLetter: "A",
@@ -191,13 +191,13 @@ describe("PROTOTYPES", () => {
         program: "FE",
         capacity: 29
       }])
-    }), it.skip("totalCapacities", () => {
+    }), it("totalCapacities", () => {
       const e = classPrompts.totalCapacities();
       expect(e).to.deep.equal({
         feCapacity: 110,
         beCapacity: 96
       })
-    }), it.skip("sortByCapacity", () => {
+    }), it("sortByCapacity", () => {
       const e = classPrompts.sortByCapacity();
       expect(e).to.deep.equal([{
         roomLetter: "H",
@@ -234,10 +234,10 @@ describe("PROTOTYPES", () => {
       }])
     })
   }), describe("Brewery Prompts", () => {
-    it.skip("getBeerCount", () => {
+    it("getBeerCount", () => {
       const e = breweryPrompts.getBeerCount();
       expect(e).to.deep.equal(40)
-    }), it.skip("getBreweryBeerCount", () => {
+    }), it("getBreweryBeerCount", () => {
       const e = breweryPrompts.getBreweryBeerCount();
       expect(e).to.deep.equal([{
         name: "Little Machine Brew",
@@ -255,7 +255,7 @@ describe("PROTOTYPES", () => {
         name: "Platt Park Brewing Co.",
         beerCount: 7
       }])
-    }), it.skip("findHighestAbvBeer", () => {
+    }), it("findHighestAbvBeer", () => {
       const e = breweryPrompts.findHighestAbvBeer();
       expect(e).to.deep.equal({
         name: "Barrel Aged Nature's Sweater",
@@ -503,7 +503,7 @@ describe("PROTOTYPES", () => {
         nationality: 'Alien',
         imdbStarMeterRating: 0
       }, {
-      }, 
+      },
       {
         name: 'Karin Ohman',
         nationality: 'Chinese',

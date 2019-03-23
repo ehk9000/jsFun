@@ -6,62 +6,28 @@
   </head>
   <body>
     <script type="text/javascript">
-    const cakes = [
-      {
-        cakeFlavor: 'dark chocolate',
-        filling: null,
-        frosting: 'dark chocolate ganache',
-        toppings: ['dutch process cocoa', 'toasted sugar', 'smoked sea salt'],
-        inStock: 15
-      },
-      {
-        cakeFlavor: 'yellow',
-        filling: 'citrus glaze',
-        frosting: 'chantilly cream',
-        toppings: ['berries', 'edible flowers'],
-        inStock: 14
-      },
-      {
-        cakeFlavor: 'white chiffon',
-        filling: 'mint and sage drizzle',
-        frosting: 'whipped sweet cream',
-        toppings: ['mint', 'cranberry', 'edible flowers'],
-        inStock: 0
-      },
-      {
-        cakeFlavor: 'butter rum',
-        filling: 'ginger cardamom swirl',
-        frosting: 'spiced rum glaze',
-        toppings: ['crystallized ginger', 'toasted sugar'],
-        inStock: 9
-      },
-      {
-        cakeFlavor: 'vanilla',
-        filling: 'St Germaine',
-        frosting: 'whipped cream',
-        toppings: ['smoked sea salt', 'crystallized ginger', 'berries'],
-        inStock: 21
-      },
-      {
-        cakeFlavor: 'honey',
-        filling: 'chocolate and cayenne',
-        frosting: 'chocolate buttercream',
-        toppings: ['smoked sea salt', 'toasted sugar'],
-        inStock: 0
-      }
-    ];
+    var num = 5;
 
-    const toppings = cakes.map(newCakes => {
-      return newCakes.toppings;
-    });
+    function first() {
+      // Log A: num
+      console.log('Log A: ', num, 5);
+      num = 6;
+      // Log B: num
+      console.log('Log B: ', num, 6);
+    }
 
-    const toppingsList = [].concat.apply([], toppings);
+    function second() {
+      // Log C: num
 
-    const uniqueList = toppingsList.filter((item, pos) => {
-    return toppingsList.indexOf(item) == pos;
-  });
+      console.log('Log C: ', num, 'reference error');
+      let num = 7;
+    }
 
-    console.log(uniqueList);
+    first();
+    second();
+
+    // Log D: num
+    console.log('Log D: ', num, 6);
     </script>
 
   </body>
