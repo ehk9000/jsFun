@@ -60,7 +60,7 @@ describe("PROTOTYPES", () => {
       }])
     })
   }), describe("Club Prompts", () => {
-    it.skip("membersBelongingToClubs", () => {
+    it("membersBelongingToClubs", () => {
       const e = clubPrompts.membersBelongingToClubs({
         Louisa: ["Drama", "Art"],
         Pam: ["Drama", "Chess", "Newspaper"],
@@ -349,30 +349,30 @@ describe("PROTOTYPES", () => {
   }), describe("Astronomy Prompts", () => {
     it.skip("starsInConstellations", () => {
       const e = astronomyPrompts.starsInConstellations();
-      expect(e).to.deep.equal([{ 
+      expect(e).to.deep.equal([{
         name: 'Rigel',
         visualMagnitude: 0.13,
         constellation: 'Orion',
         lightYearsFromEarth: 860,
         color: 'blue'
-      }, { 
+      }, {
         name: 'Achernar',
         visualMagnitude: 0.46,
         constellation: 'The Plow',
         lightYearsFromEarth: 140,
-        color: 'blue' 
-      }, { 
+        color: 'blue'
+      }, {
         name: 'Betelgeuse',
         visualMagnitude: 0.5,
         constellation: 'Orion',
         lightYearsFromEarth: 640,
         color: 'red'
-      }, { 
+      }, {
         name: 'Hadar',
         visualMagnitude: 0.61,
         constellation: 'The Little Dipper',
         lightYearsFromEarth: 350,
-        color: 'blue' 
+        color: 'blue'
       }])
     }), it.skip("starsByColor", () => {
       const e = astronomyPrompts.starsByColor();

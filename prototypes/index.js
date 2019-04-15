@@ -104,17 +104,21 @@ const clubPrompts = {
     //   ...etc
     // }
 
-    const memberList = clubs.reduce((acc, currentClub) => {
-      currentClub.members.forEach(member => {
-        if (!acc[member]) {
-          acc[member] = [];
+    const memberList = clubs.reduce((total, {club, members}) => {
+      console.log(members);
+      members.forEach(member => {
+        if(!total[members]) {
+          total[members] = [];
+        } else {
+          total[members].push(members.club)
         }
-          acc[member] = [currentClub.club];
+      })
 
-      });
+      return total;
+    }, {})
 
-      return acc;
-    }, {}); //initial value of accumulator)
+
+   //initial value of accumulator)
 
     const result = memberList;
     return result;
@@ -475,20 +479,7 @@ const breweryPrompts = {
     // Return the beer which has the highest ABV of all beers
     // e.g.
     // { name: 'Barrel Aged Nature\'s Sweater', type: 'Barley Wine', abv: 10.9, ibu: 40 }
-    const reducedBeer = breweries.reduce()
-    const sortBeers = breweries.sort((a, b) => {
-      return b.beers.nameabv - a.beers.abv;
 
-    });
-    const mapBeer = breweries.map((currentBeer) => {
-      return currentBeer.beers;
-    });
-    console.log(mapBeer);
-
-    const sortBeer = mapBeer.sort((a, b) => {
-      return b.abv - a.abv
-    });
-    console.log(sortBeer);
 
     // const highestAbv = mapBeer.reduce((total, currentBeer) => {
     //   let name = currentBeer.name;
@@ -503,7 +494,6 @@ const breweryPrompts = {
     // }, {});
     // console.log(highestAbv);
 
-    const highAbv = breweries.find((high))
     const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
@@ -551,8 +541,14 @@ const turingPrompts = {
     //  { name: 'Pam', studentCount: 21 },
     //  { name: 'Robbie', studentCount: 18 }
     // ]
+    const mapedInstructors = instructors.map((instuctor) => {
+      let studentsPer = {};
+      studentsPer.name = instuctor.name;
+      studentsPer.studentCount = cohorts[instuctor.module - 1].studentCount;
+      return studentsPer;
+    });
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = mapedInstructors;
     return result;
 
     // Annotation:
@@ -565,8 +561,21 @@ const turingPrompts = {
     // cohort1806: 9,
     // cohort1804: 10.5
     // }
+    const result  = {};
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+  const teachersPerMod = instructors.reduce((total, {module}) => {
+    if(!total[module]) {
+      total[module] = 0;
+    }  
+      total[module]++;
+      return total;
+  }, {});
+
+  const students = cohorts.forEach(({cohort, module, studentCount}) => {
+    result[`cohort${cohort}`] = studentCount / teachersPerMod[module];
+});
+
+    const result = students;
     return result;
 
     // Annotation:
@@ -587,8 +596,22 @@ const turingPrompts = {
     //     Christie: [1, 2, 3, 4],
     //     Will: [1, 2, 3, 4]
     //   }
+    const modsPer = instructors.reduce((total, {name, teaches}) => {
+      if(!total[name]) {
+        total[name] = [];
+      } 
+      cohorts.forEach(({module, curriculum}) => {
+          if(teaches.some(subject => curriculum.includes(subject))) {
+          // push ; total[name].push(module)
+          total[name].push(module);
+        }
+      });
+      return total;
+  
+    }, {});
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+
+    const result = modsPer;
     return result;
 
     // Annotation:
@@ -605,7 +628,17 @@ const turingPrompts = {
     //   recursion: [ 'Pam', 'Leta' ]
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const curriculumPer = instructors.reduce((total, {name, teaches}) => {
+      teaches.forEach(subject => {
+          if(!total[subject]) {
+          total[subject] = []
+             }
+        total[subject].push(name);
+      });
+      return total;
+     },{});
+
+    const result = curriculumPer;
     return result;
 
     // Annotation:
@@ -640,7 +673,19 @@ const bossPrompts = {
     //   { bossName: 'Scar', sidekickLoyalty: 16 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const bossMap = Object.values(bosses).map((boss) => ({
+      bossName: boss.name,
+      sidekickLoyalty: sidekicks.reduce((total, sidekick) => {
+        boss.sidekicks.forEach(currentSide => {
+          if(currentSide.name === sidekick.name) {
+            total += sidekick.loyaltyToBoss
+          }
+        });
+        return total;
+        }, 0)
+      }));
+
+    const result = bossMap;
     return result;
 
     // Annotation:
