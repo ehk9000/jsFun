@@ -6,115 +6,115 @@
   </head>
   <body>
     <script type="text/javascript">
-    const bosses = {
-  scar: {
-    name: 'Scar',
-    archnemesis: 'Mufasa',
-    goal: 'to rule the pride',
-    sidekicks: [
-      {name: 'Shenzi', dispensability: 4},
-      {name: 'Banzai', dispensability: 6},
-      {name: 'Ed', dispensability: 10 }
-    ],
-    weaknesses: ['vanity', 'hubris', 'jealousy', 'disdain for subordinates'],
-    signatureMove: 'fratricide'
+    const constellations = {
+  orion: {
+    names: ['Orion', 'The Hunter', 'The Giant', 'The Deer'],
+    stars: ['Betelgeuse', 'Rigel', 'Bellatrix', 'Mintaka', 'Alnilam', 'Alnitak', 'Saiph']
   },
-  ursula: {
-    name: 'Ursula',
-    archnemesis: 'Triton',
-    goal: 'to rule the seas',
-    sidekicks: [
-      {name: 'Flotsam', dispensability: 0},
-      {name: 'Jetsam', dispensability: 0}
-    ],
-    weaknesses: ['jealousy', 'anger', 'bitterness'],
-    signatureMove: 'tricking fools into signing legal documents without reading them thoroughly'
+  ursaMajor: {
+    names: ['Ursa Major', 'The Big Dipper', 'The Great Bear', 'The Plow'],
+    stars: ['Dubhe', 'Merak', 'Phecda', 'Megrez', 'Alioth', 'Mizar', 'Alkaid']
   },
-  jafar: {
-    name: 'Jafar',
-    archnemesis: 'Genie',
-    goal: 'to take over as Sultan',
-    sidekicks: [
-      {name: 'Iago', dispensability: 5}
-    ],
-    weaknesses: ['hubris', 'greed', 'disdain for subordinates'],
-    signatureMove: 'hypnosis'
+  ursaMinor: {
+    names: ['Ursa Minor', 'The Little Dipper', 'The Cub', 'The Little Bear'],
+    stars: ['Polaris', 'Kochab', 'Pherkad', 'Delta', 'Epsilon Ursae Minoris', 'Lambda Ursae Minoris']
   }
 };
 
-const sidekicks = [
+const stars = [
   {
-    name: 'Shenzi',
-    associates: ['Banzai', 'Ed'],
-    strengths: ['leadership', 'sass'],
-    boss: 'Scar',
-    loyaltyToBoss: 4
+    name: 'Sirius',
+    visualMagnitude: -1.46,
+    constellation: 'Canis Major',
+    lightYearsFromEarth: 8.6,
+    color: 'blue'
   },
   {
-    name: 'Banzai',
-    associates: ['Shenzi', 'Ed'],
-    strengths: ['strategy', 'suspicion'],
-    boss: 'Scar',
-    loyaltyToBoss: 5
+    name: 'Canopis',
+    visualMagnitude: -0.74,
+    constellation: 'Carina',
+    lightYearsFromEarth: 310,
+    color: 'white'
   },
   {
-    name: 'Ed',
-    associates: ['Shenzi', 'Banzai'],
-    strengths: ['unknown'],
-    boss: 'Scar',
-    loyaltyToBoss: 7
+    name: 'Alpha Centauri',
+    visualMagnitude: -0.27,
+    constellation: '',
+    lightYearsFromEarth: 4.4,
+    color: 'yellow'
   },
   {
-    name: 'Flotsam',
-    associates: ['Jetsam'],
-    strengths: ['spying', 'manipulation', 'flipping boats'],
-    boss: 'Ursula',
-    loyaltyToBoss: 10
+    name: 'Arcturus',
+    visualMagnitude: -0.05,
+    constellation: 'Boötes',
+    lightYearsFromEarth: 37,
+    color: 'orange'
   },
   {
-    name: 'Jetsam',
-    associates: ['Flotsam'],
-    strengths: ['spying', 'manipulation', 'flipping boats'],
-    boss: 'Ursula',
-    loyaltyToBoss: 10
+    name: 'Vega',
+    visualMagnitude: 0.3,
+    constellation: 'Lyra',
+    lightYearsFromEarth: 25,
+    color: 'blue'
   },
   {
-    name: 'Iago',
-    associates: [],
-    strengths: ['mimicry', 'critical'],
-    boss: 'Jafar',
-    loyaltyToBoss: 3
+    name: 'Capella',
+    visualMagnitude: 0.08,
+    constellation: 'Auriga',
+    lightYearsFromEarth: 42,
+    color: 'yellow'
+  },
+  {
+    name: 'Rigel',
+    visualMagnitude: 0.13,
+    constellation: 'Orion',
+    lightYearsFromEarth: 860,
+    color: 'blue'
+  },
+  {
+    name: 'Procyon',
+    visualMagnitude: 0.34,
+    constellation: 'Canis Minor',
+    lightYearsFromEarth: 11,
+    color: 'white'
+  },
+  {
+    name: 'Achernar',
+    visualMagnitude: 0.46,
+    constellation: 'The Plow',
+    lightYearsFromEarth: 140,
+    color: 'blue'
+  },
+  {
+    name: 'Betelgeuse',
+    visualMagnitude: 0.5,
+    constellation: 'Orion',
+    lightYearsFromEarth: 640,
+    color: 'red'
+  },
+  {
+    name: 'Hadar',
+    visualMagnitude: 0.61,
+    constellation: 'The Little Dipper',
+    lightYearsFromEarth: 350,
+    color: 'blue'
   }
 ];
 
-// iterate through sidekicks using map
-// loyalty to boss += 
+// array of constellations that that brighest stars are appart of
+// length they are looking for? What constitutes the brightest? is it sorted with all of them or is there a paramater
 
+const brightest = stars.sort((a, b) => {
+  return a.visualMagnitude - b.visualMagnitude
+})
 
-const bossMap = Object.values(bosses).map((boss) => ({
-  bossName: boss.name,
-  sidekickLoyalty: sidekicks.reduce((total, sidekick) => {
-    boss.sidekicks.forEach(currentSide => {
-      if(currentSide.name === sidekick.name) {
-        total += sidekick.loyaltyToBoss
-      }
-    });
-    return total;
-    }, 0)
-  }));
-  
-console.log(bossMap);
+const reduced = brightest.reduce((total, {constellation}) => {
+    total.push(constellation)
+  return total;
+},[]);
 
-  
-
-
-
-
-  
-
-
-
-
+console.log(brightest)
+console.log(reduced);
 
 
 

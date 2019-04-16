@@ -727,7 +727,21 @@ const astronomyPrompts = {
     //     color: 'red' }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+
+const starsIn = stars.reduce((total, currentStar) => {
+
+  Object.values(constellations).forEach(star => {
+    if(star.names[0] === currentStar.constellation) {
+      total.push(currentStar)
+    }
+  });
+
+  return total;
+},[])
+
+
+
+    const result = starsIn;
     return result;
 
     // Annotation:
@@ -745,7 +759,18 @@ const astronomyPrompts = {
     //   red: [{obj}]
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const starColor = stars.reduce((total, star) => {
+      if(!total[star.color]) {
+        total[star.color] = [];
+      } else {
+        total[star.color].push(star)
+    
+      }
+      return total
+    },{})
+    
+
+    const result = starColor;
     return result;
 
     // Annotation:
@@ -767,7 +792,17 @@ const astronomyPrompts = {
     //    "The Little Dipper" ]
 
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const brightest = stars.sort((a, b) => {
+      return a.visualMagnitude - b.visualMagnitude
+    })
+    
+    const reduced = brightest.reduce((total, {constellation}) => {
+        total.push(constellation)
+      return total;
+    },[]);
+    
+
+    const result = reduced;
     return result;
 
     // Annotation:
